@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using G4_SC701_CasoPractico1.Rutas.Models;
 
 namespace G4_SC701_CasoPractico1.Rutas.Models
 {
@@ -52,6 +53,8 @@ namespace G4_SC701_CasoPractico1.Rutas.Models
            
 
         }
+        public DbSet<G4_SC701_CasoPractico1.Rutas.Models.Ruta> Ruta { get; set; } = default!;
+        public DbSet<G4_SC701_CasoPractico1.Rutas.Models.Paradas> Paradas { get; set; } = default!;
         
     }
 }

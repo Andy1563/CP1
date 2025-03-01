@@ -76,9 +76,7 @@ namespace G4_SC701_CasoPractico1.Rutas.Migrations
 
                     b.Property<string>("Telefono")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-<                    b.Property<int>("idVehiculo")
+                        .HasColumnType("nvarchar(max)");                    b.Property<int>("idVehiculo")
                         .HasColumnType("int");
 
 
@@ -127,7 +125,6 @@ namespace G4_SC701_CasoPractico1.Rutas.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Vehiculos");
-                });
 
                     b.ToTable("Usuarios");
                 });
