@@ -10,7 +10,11 @@
 
         public DateTime FechaRegistro { get; set; }
         public int IdUsuarioRegistro { get; set; }
-        
+        public int IdVehiculo { get; set; }
+
+
+
+        public Vehiculo vehiculo { get; set; }
 
         public Usuario usuario { get; set; }
 

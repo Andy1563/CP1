@@ -3,7 +3,13 @@
     public class Boleto
     {
         public int Id { get; set; }
-        public string IdRuta { get; set; }
-        public string IdUsuario { get; set;}
+        public int IdRuta { get; set; }
+        public int IdUsuario { get; set;}
+
+        public DateTime FechaCompra {  get; set; }
+
+        public Ruta ruta { get; set; }
+
+        public Usuario usuario { get; set; }
     }
 }

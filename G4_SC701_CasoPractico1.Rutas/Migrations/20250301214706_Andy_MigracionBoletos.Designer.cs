@@ -4,6 +4,7 @@ using G4_SC701_CasoPractico1.Rutas.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace G4_SC701_CasoPractico1.Rutas.Migrations
 {
     [DbContext(typeof(CP1Context))]
-    partial class CP1ContextModelSnapshot : ModelSnapshot
+    [Migration("20250301214706_Andy_MigracionBoletos")]
+    partial class Andy_MigracionBoletos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

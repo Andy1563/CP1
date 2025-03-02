@@ -13,6 +13,15 @@ namespace G4_SC701_CasoPractico1.Rutas.Models
 
         public DbSet<Vehiculo> Vehiculos { get; set; }
 
+        public DbSet<Boleto> Boletos { get; set; }
+
+        public DbSet<Ruta> Rutas { get; set; }
+
+        public DbSet<Paradas> Parada {  get; set; }
+
+        public DbSet<Horarios> Horarios { get; set; }
+
+
 
 
 
@@ -50,7 +59,49 @@ namespace G4_SC701_CasoPractico1.Rutas.Models
                 
             });
             modelBuilder.Entity<Vehiculo>().HasMany<Usuario>(ve => ve.usuario).WithOne(user => user.vehiculo).HasForeignKey(v => v.idVehiculo);
-           
+
+            /*Boletos*/
+            modelBuilder.Entity<Boleto>(boleto =>
+            {
+                boleto.HasKey(b => b.Id);
+
+                boleto.HasOne(b => b.ruta).WithMany().HasForeignKey(b => b.IdRuta).OnDelete(DeleteBehavior.Restrict);
+
+                boleto.HasOne(b => b.usuario).WithMany().HasForeignKey(b => b.IdUsuario).OnDelete(DeleteBehavior.Restrict);
+            });
+
+            // Configuración de Ruta
+            // Configuración de Ruta
+            modelBuilder.Entity<Ruta>(ruta =>
+            {
+                ruta.HasKey(r => r.Id);
+
+                ruta.HasOne(r => r.usuario).WithMany().HasForeignKey(r => r.IdUsuarioRegistro).OnDelete(DeleteBehavior.Restrict);
+
+                ruta.HasOne(r => r.vehiculo).WithMany().HasForeignKey(r => r.IdVehiculo).OnDelete(DeleteBehavior.Restrict);
+
+                ruta.HasMany(r => r.paradas).WithOne(p => p.ruta).OnDelete(DeleteBehavior.Cascade);
+
+                ruta.HasMany(r => r.horario).WithOne(h => h.rutas).OnDelete(DeleteBehavior.Cascade);
+            });
+
+            // Configuración de Paradas
+            modelBuilder.Entity<Paradas>(parada =>
+            {
+                parada.HasKey(p => p.Id);
+
+                parada.HasOne(p => p.ruta).WithMany(r => r.paradas).OnDelete(DeleteBehavior.Cascade);
+            });
+
+            // Configuración de Horarios
+            modelBuilder.Entity<Horarios>(horario =>
+            {
+                horario.HasKey(h => h.Id);
+
+                horario.HasOne(h => h.rutas).WithMany(r => r.horario).OnDelete(DeleteBehavior.Cascade);
+            });
+
+
 
         }
         public DbSet<G4_SC701_CasoPractico1.Rutas.Models.Ruta> Ruta { get; set; } = default!;
