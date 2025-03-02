@@ -70,8 +70,6 @@ namespace G4_SC701_CasoPractico1.Rutas.Models
                 boleto.HasOne(b => b.usuario).WithMany().HasForeignKey(b => b.IdUsuario).OnDelete(DeleteBehavior.Restrict);
             });
 
-            // Configuración de Ruta
-            // Configuración de Ruta
             modelBuilder.Entity<Ruta>(ruta =>
             {
                 ruta.HasKey(r => r.Id);
